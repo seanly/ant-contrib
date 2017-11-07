@@ -298,7 +298,9 @@ public class Variable extends Task {
         Enumeration<Object> e = props.keys();
         while (e.hasMoreElements()) {
             String name = (String) e.nextElement();
+
             String value = props.getProperty(name);
+            value = getProject().replaceProperties(value);
             forceProperty(name, value);
         }
     }
